@@ -13,18 +13,23 @@ namespace Platformer.UI
         {
             blurredBackground.Show();
             gameObject.SetActive(true);
+            Time.timeScale = 0; //Temp pause...
         }
 
-        public void Hide()
-        {
-            blurredBackground.Hide();
-            gameObject.SetActive(false);
-        }
+        //We don't really need this :|
+        //public void Hide()
+        //{
+        //    blurredBackground.Hide();
+        //    gameObject.SetActive(false);
+        //}
 
         #region Event Handlers
 
         public void BtnResumeClicked()
         {
+            blurredBackground.Hide();
+            gameObject.SetActive(false);
+            Time.timeScale = 1; //Aaannd... we're back! C:
         }
 
         public void BtnMainMenuClicked()

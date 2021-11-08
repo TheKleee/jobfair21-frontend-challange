@@ -21,11 +21,11 @@ namespace Platformer.Mechanics
         /// <summary>
         /// Max horizontal speed of the player.
         /// </summary>
-        public float maxSpeed = 7;
+        [Range(1.0f, 5.0f)] public float maxSpeed = 3;
         /// <summary>
         /// Initial jump velocity at the start of a jump.
         /// </summary>
-        public float jumpTakeOffSpeed = 7;
+        [Range(1.0f, 10.0f)] public float jumpTakeOffSpeed = 7;
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
@@ -56,9 +56,12 @@ namespace Platformer.Mechanics
             if (controlEnabled)
             {
                 move.x = Input.GetAxis("Horizontal");
-                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
-                    jumpState = JumpState.PrepareToJump;
-                else if (Input.GetButtonUp("Jump"))
+                if (jumpState == JumpState.Grounded)
+                {
+                    if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W))
+                        jumpState = JumpState.PrepareToJump;
+                }
+                else if (Input.GetButtonUp("Jump") || Input.GetKeyUp(KeyCode.S))
                 {
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;

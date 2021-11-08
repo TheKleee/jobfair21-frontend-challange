@@ -27,7 +27,9 @@ namespace Platformer.UI
             PlayerDeath.OnExecute += PlayerDiedCallback;
             PlayerEnteredVictoryZone.OnExecute += PlayerWonCallback;
             
-            GameDatabase.Instance.ResetScore();
+            GameDatabase.instance.ResetScore();
+
+            lblUsername.text = GameDatabase.instance.CurrentUser.Username;
         }
 
         private void OnDestroy()
@@ -38,8 +40,8 @@ namespace Platformer.UI
 
         private void Update()
         {
-            lblTokens.text = GameDatabase.Instance.CurrentUser.Tokens.ToString();
-            lblEnemiesKilled.text = GameDatabase.Instance.CurrentUser.EnemiesKilled.ToString();
+            lblTokens.text = GameDatabase.instance.CurrentUser.Tokens.ToString();
+            lblEnemiesKilled.text = GameDatabase.instance.CurrentUser.EnemiesKilled.ToString();
         }
 
         #region Event Handlers

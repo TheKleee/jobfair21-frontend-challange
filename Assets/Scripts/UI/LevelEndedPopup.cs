@@ -27,10 +27,12 @@ namespace Platformer.UI
             blurredBackground.Show();
             gameObject.SetActive(true);
             
-            lblTokens.text = GameDatabase.Instance.CurrentUser.Tokens.ToString();
-            lblEnemiesKilled.text = GameDatabase.Instance.CurrentUser.EnemiesKilled.ToString();
-            lblUsername.text = GameDatabase.Instance.CurrentUser.Username;
-            lblScore.text = GameDatabase.Instance.CurrentUser.Score.ToString();
+            lblTokens.text = GameDatabase.instance.CurrentUser.Tokens.ToString();
+            lblEnemiesKilled.text = GameDatabase.instance.CurrentUser.EnemiesKilled.ToString();
+            lblUsername.text = GameDatabase.instance.CurrentUser.Username;
+            lblScore.text = GameDatabase.instance.CurrentUser.Score.ToString();
+            lblTitle.text = won ? "LEVEL WON" : "LEVEL LOST";
+            lblTitle.color = won ? titleWonColor : titleLostColor;
         }
 
         #region Event Handlers

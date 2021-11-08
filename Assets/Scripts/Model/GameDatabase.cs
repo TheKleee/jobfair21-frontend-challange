@@ -4,7 +4,7 @@ namespace Platformer.Model
 {
     public class GameDatabase
     {
-        public static GameDatabase Instance = new GameDatabase();
+        public static GameDatabase instance = new GameDatabase();
         public UserData CurrentUser { get; private set; }
 
         private GameDatabase()
@@ -35,20 +35,23 @@ namespace Platformer.Model
             CurrentUser.EnemiesKilled = 0;
         }
 
+        /// <summary>
+        /// Just wanted to say I'm a huge fan of destructors so I'll leave this comment here >:D
+        /// </summary>
         ~GameDatabase()
         {
             PlayerTokenCollision.OnExecute -= PlayerCollectedToken;
             EnemyDeath.OnExecute -= PlayerKilledEnemy;
         }
+    }
 
-        public class UserData
-        {
-            public string Username = "";
-            public int Tokens { get; internal set; }
-            public int EnemiesKilled { get; internal set; }
-            public int Score => Tokens * 10 + EnemiesKilled * 100;
-            
-        }
+    public class UserData
+    {
+        public string Username = "";
+        public int Tokens { get; internal set; }
+        public int EnemiesKilled { get; internal set; }
+        public int Score => Tokens * 10 + EnemiesKilled * 100;
+
     }
 }
    
