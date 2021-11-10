@@ -37,7 +37,7 @@ namespace Platformer.Mechanics
         bool jump;
         Vector2 move;
         SpriteRenderer spriteRenderer;
-        internal Animator animator;
+        internal Animator animator { get; private set; }
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;

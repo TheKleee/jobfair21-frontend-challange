@@ -3,7 +3,6 @@ using Platformer.Model;
 using TMPro;
 using UnityEngine;
 using System.Collections;
-//using Platformer.Core;
 
 namespace Platformer.UI
 {
@@ -63,13 +62,9 @@ namespace Platformer.UI
 
 
         #region Win Lose Delay:
-        //float wfsDelay;
-        //WaitForSeconds wfsValue { get { return wfs; } set { value = new WaitForSeconds(wfsDelay); } }
         WaitForSeconds wfs = new WaitForSeconds(2f);
         IEnumerator _LevelEnded(bool won = true)
         {
-            //var player = Simulation.GetModel<PlatformerModel>().player;
-            //wfsDelay = 1;
             yield return wfs;
             levelEndedPopup.Show(won);
         }
