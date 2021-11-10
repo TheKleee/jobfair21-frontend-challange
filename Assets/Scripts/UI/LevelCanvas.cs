@@ -30,6 +30,7 @@ namespace Platformer.UI
             GameDatabase.instance.ResetScore();
 
             lblUsername.text = GameDatabase.instance.CurrentUser.Username;
+            pauseMenu.TimeScaleManager();
         }
 
         private void OnDestroy()
