@@ -58,10 +58,10 @@ namespace Platformer.Mechanics
                 move.x = Input.GetAxis("Horizontal");
                 if (jumpState == JumpState.Grounded)
                 {
-                    if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W))
+                    if (Input.GetButtonDown("Jump"))
                         jumpState = JumpState.PrepareToJump;
                 }
-                else if (Input.GetButtonUp("Jump") || Input.GetKeyUp(KeyCode.S))
+                else if (Input.GetButtonUp("Jump"))
                 {
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;

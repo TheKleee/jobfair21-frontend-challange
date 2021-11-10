@@ -13,7 +13,7 @@ namespace Platformer.UI
         {
             blurredBackground.Show();
             gameObject.SetActive(true);
-            Time.timeScale = 0; //Temp pause...
+            TimeScaleManager(0); //Temp pause...
         }
 
         //We don't really need this :|
@@ -29,17 +29,25 @@ namespace Platformer.UI
         {
             blurredBackground.Hide();
             gameObject.SetActive(false);
-            Time.timeScale = 1; //Aaannd... we're back! C:
+            TimeScaleManager(0); //Aaannd... we're back! C:
         }
 
         public void BtnMainMenuClicked()
         {
+            TimeScaleManager();
             SceneManager.LoadScene("Assets/Scenes/MainScene.unity", LoadSceneMode.Single);
         }
 
         public void BtnRestartClicked()
         {
+            TimeScaleManager();
             SceneManager.LoadScene("Assets/Scenes/LevelScene.unity", LoadSceneMode.Single);
+        }
+
+        float TimeScaleManager(float timeSpeed = 1)
+        {
+            Time.timeScale = timeSpeed;
+            return Time.timeScale;
         }
 
         #endregion Event Handlers
