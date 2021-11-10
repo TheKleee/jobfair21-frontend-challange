@@ -29,7 +29,7 @@ namespace Platformer.UI
         {
             blurredBackground.Hide();
             gameObject.SetActive(false);
-            TimeScaleManager(0); //Aaannd... we're back! C:
+            TimeScaleManager(); //Aaannd... we're back! C:
         }
 
         public void BtnMainMenuClicked()

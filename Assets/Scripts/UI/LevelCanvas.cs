@@ -2,6 +2,8 @@ using Platformer.Gameplay;
 using Platformer.Model;
 using TMPro;
 using UnityEngine;
+using System.Collections;
+//using Platformer.Core;
 
 namespace Platformer.UI
 {
@@ -49,13 +51,30 @@ namespace Platformer.UI
         
         private void PlayerDiedCallback(PlayerDeath playerDeath)
         {
-            levelEndedPopup.Show(false);
+            //levelEndedPopup.Show(false);
+            StartCoroutine(_LevelEnded(false));
         }
 
         private void PlayerWonCallback(PlayerEnteredVictoryZone playerEnteredVictoryZone)
         {
-            levelEndedPopup.Show(true);
+            //levelEndedPopup.Show(true);
+            StartCoroutine(_LevelEnded());
         }
+
+
+        #region Win Lose Delay:
+        //float wfsDelay;
+        //WaitForSeconds wfsValue { get { return wfs; } set { value = new WaitForSeconds(wfsDelay); } }
+        WaitForSeconds wfs = new WaitForSeconds(2f);
+        IEnumerator _LevelEnded(bool won = true)
+        {
+            //var player = Simulation.GetModel<PlatformerModel>().player;
+            //wfsDelay = 1;
+            yield return wfs;
+            levelEndedPopup.Show(won);
+        }
+
+        #endregion Win Lose Delay
 
         public void BtnPauseClicked()
         {
