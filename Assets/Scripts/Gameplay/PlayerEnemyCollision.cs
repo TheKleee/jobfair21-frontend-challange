@@ -21,7 +21,6 @@ namespace Platformer.Gameplay
         public override void Execute()
         {
             var willHurtEnemy = player.Bounds.center.y >= enemy.Bounds.max.y;
-            Debug.Log($"Player: {player.Bounds.center.y}, Enemy: {enemy.Bounds.center.y}");
             if (willHurtEnemy)
             {
                 var enemyHealth = enemy.GetComponent<Health>();
